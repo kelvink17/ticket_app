@@ -1,7 +1,4 @@
-interface Ticket {
-  status: string
-  priority: string
-}
+import type { Ticket } from '../types'
 
 interface TicketSummaryProps {
   tickets: Ticket[]

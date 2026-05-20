@@ -51,7 +51,6 @@
 }
 
 #root {
-  width: 1126px;
   max-width: 100%;
   margin: 0 auto;
   text-align: center;
@@ -95,7 +94,6 @@ p {
   margin: 0;
 }
 .app-container{
-  /* border:  2px solid red; */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -103,7 +101,6 @@ p {
   min-height: 100vh;
 }
 .app-main{
-  /* border: 2px solid blue; */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -111,7 +108,6 @@ p {
   width: 100%;
 }
 .hero{
-  /* border: 2px solid green; */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -120,17 +116,15 @@ p {
   width: 100%;
 }
 .tickets-section{
-  /* border: 2px solid orange; */
   margin: 10px;
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   padding: 20px;
-  width: 100%;
 }
 .summary-container{
-  /* border: 2px solid red ; */
   background-color: #08060d;
   color: #fff;
   display: flex;
@@ -140,19 +134,33 @@ p {
   border-radius: 10px;
 }
 .content-grid{
-  /* border: 2px solid purple; */
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 20px;
+  grid-template-columns: 380px 1fr;
+  gap: 24px;
   width: 100%;
+  max-width: 1400px;
+  margin: 20px auto;
+  align-items: start;
+  box-sizing: border-box;
+  padding: 0 20px;
 }
+
+@media (max-width: 1024px) {
+  .content-grid {
+    grid-template-columns: 1fr;
+  }
+  .tickets-display-section {
+    width: 100% !important;
+  }
+}
+
 .form-group{
-  /* border: 2px solid pink; */
   display: flex;
-  /* flex-direction: column; */
+  flex-direction: column;
   align-items: flex-start;
   justify-content: center;
   width: 100%;
+  margin-bottom: 16px;
 }
 
 .form-group label{
@@ -178,19 +186,37 @@ p {
   box-shadow: 0 0 0 3px var(--accent-bg);
 }
 
-.ticket-list{
-  /* border: 2px solid cyan; */
+.tickets-display-section{
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  align-items: stretch;
+  justify-content: flex-start;
   width: 100%;
+  box-sizing: border-box;
+  padding: 20px;
 }
-/* tickets-table{
-  border: 2px solid magenta;
+
+.ticket-list{
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: flex-start;
+  width: 100%;
+  box-sizing: border-box;
+  overflow-x: auto;
+  margin-top: 16px;
+}
+
+
+
+.tickets-table {
   width: 100%;
   border-collapse: collapse;
-} */
+  font-size: 15px;
+  text-align: left;
+  box-sizing: border-box;
+}
+
 .tickets-table th,
 .tickets-table td{
   border: 1px solid var(--border);
@@ -199,21 +225,148 @@ p {
 }
 .tickets-table th{
   background-color: var(--accent-bg);
+  font-weight: 600;
+  color: var(--text-h);
 }
 .tickets-table tr:nth-child(even){
   background-color: var(--code-bg);
 }
-/* .tictets-display-section{
-  border: 2px solid cyan;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  padding: 5px;
-} */
 
-.content-grid{
-  /* border: 2px solid purple; */
-  display: flex
+.tickets-table tr:hover {
+  background-color: rgba(170, 59, 255, 0.03);
 }
+
+.priority-badge,
+.status-badge {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 9999px;
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: capitalize;
+  white-space: nowrap;
+}
+
+.priority-low {
+  background-color: #f3f4f6;
+  color: #1f2937;
+}
+.priority-medium {
+  background-color: #fef3c7;
+  color: #92400e;
+}
+.priority-high {
+  background-color: #fee2e2;
+  color: #991b1b;
+}
+.priority-critical {
+  background-color: #fca5a5;
+  color: #7f1d1d;
+  border: 1px solid #ef4444;
+}
+
+.status-open {
+  background-color: #dbeafe;
+  color: #1e40af;
+}
+.status-in-progress {
+  background-color: #e0e7ff;
+  color: #3730a3;
+}
+.status-resolved {
+  background-color: #d1fae5;
+  color: #065f46;
+}
+.status-closed {
+  background-color: #e5e7eb;
+  color: #374151;
+}
+
+.ticket-edit-cell {
+  padding: 6px !important;
+}
+
+.edit-input,
+.edit-textarea,
+.edit-select {
+  width: 100%;
+  padding: 6px 8px;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  font-size: 14px;
+  font-family: var(--sans);
+  box-sizing: border-box;
+  background-color: var(--bg);
+  color: var(--text-h);
+}
+
+.edit-input:focus,
+.edit-textarea:focus,
+.edit-select:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 2px var(--accent-bg);
+}
+
+.action-buttons-group {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.edit-button,
+.delete-button,
+.save-button,
+.cancel-button {
+  padding: 6px 12px;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-transform: capitalize;
+  box-sizing: border-box;
+}
+
+.edit-button {
+  background-color: var(--accent-bg);
+  color: var(--accent);
+  border: 1px solid var(--accent-border);
+}
+.edit-button:hover {
+  background-color: var(--accent);
+  color: #fff;
+}
+
+.delete-button {
+  background-color: rgba(239, 68, 68, 0.1);
+  color: #ef4444;
+  border: 1px solid rgba(239, 68, 68, 0.3);
+}
+.delete-button:hover {
+  background-color: #ef4444;
+  color: #fff;
+}
+
+.save-button {
+  background-color: rgba(16, 185, 129, 0.1);
+  color: #10b981;
+  border: 1px solid rgba(16, 185, 129, 0.3);
+}
+.save-button:hover {
+  background-color: #10b981;
+  color: #fff;
+}
+
+.cancel-button {
+  background-color: var(--code-bg);
+  color: var(--text);
+  border: 1px solid var(--border);
+}
+.cancel-button:hover {
+  background-color: var(--border);
+  color: var(--text-h);
+}
+

@@ -1,7 +1,8 @@
 import { useState } from 'react'
+import type { TicketFormData } from '../types'
 
 interface TicketFormProps {
-  onSubmit: (data: any) => void
+  onSubmit: (data: TicketFormData) => void
 }
 
 export default function TicketForm({ onSubmit }: TicketFormProps) {

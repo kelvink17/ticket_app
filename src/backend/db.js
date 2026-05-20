@@ -14,10 +14,10 @@ export async function connectDB() {
     client = new MongoClient(MONGODB_URI)
     await client.connect()
     db = client.db(DATABASE_NAME)
-    console.log('Connected to MongoDB Atlas / Real MongoDB')
+    console.log('Connected already')
     return db
   } catch (error) {
-    console.error('MongoDB connection error. Please paste your MongoDB Atlas connection string in .env!', error)
+    console.error('MongoDB error do sumn!', error)
     throw error
   }
 }

@@ -11,14 +11,14 @@ const PORT = process.env.PORT || 3005
 app.use(cors())
 app.use(express.json())
 
+
 connectDB().catch(error => {
   console.error('MongoDB connection failed', error)
-  process.exit(1)
 })
 
 app.get('/api/tickets', async (req, res) => {
   try {
-    const tickets = await getTicketsCollection().find().sort({ createdAt: -1 }).toArray()
+    const tickets = await getTicketsCollection().find().sort().toArray()
     return res.json(tickets)
   } catch (error) {
     console.error(error)
